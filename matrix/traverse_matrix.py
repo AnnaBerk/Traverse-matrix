@@ -1,13 +1,10 @@
 import asyncio
-import sys
-
 import aiohttp
-from typing import List
-import logging
-
 from aiohttp import web
 from asyncio import TimeoutError
 from aiohttp import ClientError
+from typing import List
+import logging
 
 from matrix.exceptions import NotSquareMatrix
 

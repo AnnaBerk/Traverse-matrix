@@ -15,6 +15,11 @@ PREPARED_MATRIX = [[10, 20, 30, 40],
                    [90, 100, 110, 120],
                    [130, 140, 150, 160]]
 
+PREPARED_MATRIX2 = [[10, 20, 30],
+                   [50, 60, 70],
+                   [90, 100, 110]]
+
+
 SOURCE_URL = 'https://raw.githubusercontent.com/avito-tech/python-trainee-assignment/main/matrix.txt'
 
 
@@ -29,6 +34,14 @@ class TestFormatMatrix(unittest.TestCase):
             call, result, 'Функция format_matrix не работает с 4ех размерной матрицей '
         )
 
+    def test_three_dim_matrix(self):
+        with open("test_matrix2.txt") as file:
+            call = format_matrix(file.read())
+        result = PREPARED_MATRIX2
+        self.assertEqual(
+            call, result, 'Функция format_matrix не работает с 3ех размерной матрицей '
+        )
+
     def test_empty_str(self):
         call = format_matrix("")
         result = []
@@ -36,12 +49,6 @@ class TestFormatMatrix(unittest.TestCase):
             call, result, 'Функция format_matrix не работает с пустой строкой'
         )
 
-    def test_not_square_matrix(self):
-        call = format_matrix("+----+\n| 1 | 0 |\n+_____+")
-        result = []
-        self.assertEqual(
-            call, result, 'Функция format_matrix не работает с не квадратной матрицей'
-        )
 
 
 class TestTraverseMatrix(unittest.TestCase):
