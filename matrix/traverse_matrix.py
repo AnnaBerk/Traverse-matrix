@@ -29,7 +29,7 @@ async def get_string_from_url(url: str) -> str:
 
 def format_matrix(matrix_str: str) -> list[list[int]]:
     logging.info('Formatting matrix')
-    matrix = []
+    matrix: list[list[int]] = []
     for line in matrix_str.split('\n'):
         if line and line[0] != '+':
             matrix.append([int(num) for num in line[1:-1].split('|')])
@@ -73,11 +73,8 @@ def traverse_matrix(matrix: list[list[int]]) -> List[int]:
 
 
 def get_matrix(url: str) -> List[int]:
-    # loop = asyncio.get_event_loop()
-    # loop.run_until_complete(get_string('https://raw.githubusercontent.com/avito-tech/python-trainee-assignment/main'
-    #                                '/matrix.txt'))
     text = asyncio.run(get_string_from_url(url))
-    traverse_matrix(format_matrix(text))
+    return traverse_matrix(format_matrix(text))
 
 
 if __name__ == '__main__':
@@ -89,6 +86,3 @@ if __name__ == '__main__':
     )
 
 get_matrix('https://raw.githubusercontent.com/avito-tech/python-trainee-assignment/main/matrix.txt')
-
-# m = '+-----+-----+-----+-----+\n| 20 | 20 |  30 |  40 |\n+-----+-----+-----+-----+\n|  50 |  60 |  70 |  80 |\n+-----+-----+-----+-----+\n|  90 | 100 | 110 | 120 |\n+-----+-----+-----+-----+\n| 130 | 140 | 150 | 160 |\n+-----+-----+-----+-----+\n'
-# format_matrix(m)

@@ -64,7 +64,7 @@ class TestGetMatrix(unittest.TestCase):
     """Тестируем get_matrix."""
 
     def test_get_matrix(self):
-        call = asyncio.run(get_matrix(SOURCE_URL))
+        call = get_matrix(SOURCE_URL)
         result = TRAVERSAL
         self.assertEqual(
             call, result, 'Функция get_matrix не работает с урлом'
