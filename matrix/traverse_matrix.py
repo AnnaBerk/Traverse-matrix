@@ -38,8 +38,38 @@ def format_matrix(matrix_str: str) -> list[list[int]]:
         raise NotSquareMatrix("Matrix is not squared")
     return matrix
 
+
 def traverse_matrix(matrix: list[list[int]]) -> List[int]:
-    print(matrix)
+    mtxlen: int = len(matrix)
+    rowlen: int = len(matrix)
+    result: list[int] = []
+    row: int = 0
+    col: int = 0
+
+    while row < mtxlen and col < rowlen:
+        for i in range(rowlen):
+            result.append(matrix[i][row])
+
+        row += 1
+
+        for i in range(row, mtxlen, 1):
+            result.append(matrix[rowlen - 1][i])
+
+        rowlen -= 1
+
+        if row < mtxlen:
+            for i in range(rowlen - 1, col - 1, -1):
+                result.append(matrix[i][mtxlen - 1])
+
+            mtxlen -= 1
+
+        if col < rowlen:
+            for i in range(mtxlen - 1, row, -1):
+                result.append(matrix[col][i])
+
+            col += 1
+
+    return result
 
 
 def get_matrix(url: str) -> List[int]:
@@ -47,7 +77,7 @@ def get_matrix(url: str) -> List[int]:
     # loop.run_until_complete(get_string('https://raw.githubusercontent.com/avito-tech/python-trainee-assignment/main'
     #                                '/matrix.txt'))
     text = asyncio.run(get_string_from_url(url))
-    format_matrix(text)
+    traverse_matrix(format_matrix(text))
 
 
 if __name__ == '__main__':

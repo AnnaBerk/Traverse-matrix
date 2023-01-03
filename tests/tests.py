@@ -16,9 +16,8 @@ PREPARED_MATRIX = [[10, 20, 30, 40],
                    [130, 140, 150, 160]]
 
 PREPARED_MATRIX2 = [[10, 20, 30],
-                   [50, 60, 70],
-                   [90, 100, 110]]
-
+                    [50, 60, 70],
+                    [90, 100, 110]]
 
 SOURCE_URL = 'https://raw.githubusercontent.com/avito-tech/python-trainee-assignment/main/matrix.txt'
 
@@ -48,7 +47,6 @@ class TestFormatMatrix(unittest.TestCase):
         self.assertEqual(
             call, result, 'Функция format_matrix не работает с пустой строкой'
         )
-
 
 
 class TestTraverseMatrix(unittest.TestCase):
